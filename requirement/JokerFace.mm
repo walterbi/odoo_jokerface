@@ -1,0 +1,51 @@
+<map version="0.8.1">
+<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
+<node CREATED="1491630706963" ID="Freemind_Link_775626216" MODIFIED="1491630714488" TEXT="JokerFace">
+<node CREATED="1491630726420" ID="_" MODIFIED="1491630735327" POSITION="right" TEXT="Product">
+<node CREATED="1491630738515" ID="Freemind_Link_1474573770" MODIFIED="1491630885474" TEXT="Series">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1491630742005" ID="Freemind_Link_774526975" MODIFIED="1491630887793" TEXT="Categories">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1491630747372" ID="Freemind_Link_1492942767" MODIFIED="1491630890852" TEXT="Tags">
+<icon BUILTIN="help"/>
+</node>
+<node CREATED="1491630751244" ID="Freemind_Link_665460379" MODIFIED="1491630893194" TEXT="Advances">
+<icon BUILTIN="help"/>
+<node CREATED="1491631008759" ID="Freemind_Link_1891195042" MODIFIED="1491631040115" TEXT="show group relevant products"/>
+<node CREATED="1491631025095" ID="Freemind_Link_1051627920" MODIFIED="1491631046538" TEXT="viewing group relevant products"/>
+</node>
+</node>
+<node CREATED="1491630763533" ID="Freemind_Link_297723239" MODIFIED="1491630766791" POSITION="left" TEXT="Website">
+<node CREATED="1491631078151" ID="Freemind_Link_1892086756" MODIFIED="1491631084323" TEXT="Navigation &amp; menu">
+<node CREATED="1491630921591" ID="Freemind_Link_987830680" MODIFIED="1491630945833" TEXT="Categories navigation"/>
+<node CREATED="1491630959391" ID="Freemind_Link_849942926" MODIFIED="1491631241249" TEXT="Series navigation">
+<icon BUILTIN="button_ok"/>
+</node>
+<node CREATED="1491630984959" ID="Freemind_Link_1472133334" MODIFIED="1491630996115" TEXT="Series list in product details"/>
+</node>
+<node CREATED="1491631093720" ID="Freemind_Link_277150100" MODIFIED="1491631098948" TEXT="Homepage">
+<node CREATED="1491631100288" ID="Freemind_Link_154202840" MODIFIED="1491631106827" TEXT="Feature block"/>
+<node CREATED="1491631108416" ID="Freemind_Link_1213593575" MODIFIED="1491631113171" TEXT="Sale block"/>
+<node CREATED="1491631120624" ID="Freemind_Link_1633375362" MODIFIED="1491631122859" TEXT="Hot block"/>
+<node CREATED="1491631126273" ID="Freemind_Link_33652710" MODIFIED="1491631128932" TEXT="Latest block"/>
+</node>
+<node CREATED="1491631142504" ID="Freemind_Link_1297361525" MODIFIED="1491631146252" TEXT="List product">
+<node CREATED="1491631154552" ID="Freemind_Link_1683798911" MODIFIED="1491631157452" TEXT="Sorting">
+<node CREATED="1491631162905" ID="Freemind_Link_1959614723" MODIFIED="1491631231439" TEXT="Modified date">
+<icon BUILTIN="full-1"/>
+</node>
+<node CREATED="1491631173897" ID="Freemind_Link_265681497" MODIFIED="1491631232785" TEXT="Out of stock">
+<icon BUILTIN="full-2"/>
+</node>
+</node>
+<node CREATED="1491631189881" ID="Freemind_Link_1724463581" MODIFIED="1491631191965" TEXT="Showing">
+<node CREATED="1491631193072" ID="Freemind_Link_843919491" MODIFIED="1491631215061" TEXT="Sales"/>
+<node CREATED="1491631199809" ID="Freemind_Link_1552514363" MODIFIED="1491631204141" TEXT="Out of stock"/>
+<node CREATED="1491631204753" ID="Freemind_Link_174389126" MODIFIED="1491631206972" TEXT="Hot"/>
+</node>
+</node>
+</node>
+</node>
+</map>

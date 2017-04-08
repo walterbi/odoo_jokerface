@@ -65,8 +65,8 @@ if __name__ == '__main__':
 
     driver = webdriver.Chrome()
 
-    # SeriesClone()
+    SeriesClone()
     # CatClone()
-    SubCatClone()
+    # SubCatClone()
 
     os.system('pkill chromedriver')
