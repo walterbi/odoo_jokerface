@@ -10,7 +10,7 @@ class UserAdditionalInfo(AuthSignupHome):
     def do_signup(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
         print "are you right now???"
-        values = { key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone') }
+        values = { key: qcontext.get(key) for key in ('login', 'name', 'password', 'phone', 'street', 'birthday') }
         assert values.values(), "The form was not properly filled in."
         assert values.get('password') == qcontext.get('confirm_password'), "Passwords do not match; please retype them."
         supported_langs = [lang['code'] for lang in request.env['res.lang'].sudo().search_read([], ['code'])]
