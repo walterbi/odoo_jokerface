@@ -8,7 +8,7 @@
 This module allows you to manage additional information of users.
 =========================================================================
     """,
-    'depends': ['base'],
+    'depends': ['base', 'web'],
     'data': [
         'views/user_portal_additional_info.xml',
     ],

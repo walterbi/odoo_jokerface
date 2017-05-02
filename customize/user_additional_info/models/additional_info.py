@@ -8,8 +8,8 @@ class UserAdditionalInfo(models.Model):
     _inherit = "res.users"
 
     # Basic information
-    gender = fields.Char(string="Users Gender", required=True)
-    birthday = fields.Date(string="Users Birthday", required=True)
+    gender = fields.Char(string="Users Gender")
+    birthday = fields.Date(string="Users Birthday")
     status = fields.Integer(string="Users Status")
     level = fields.Integer(string="Users Level")
     point = fields.Integer(string="Users Point to Use")
