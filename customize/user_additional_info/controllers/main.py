@@ -24,12 +24,6 @@ class WebsiteAccount(website_account):
 
     @http.route()
     def details(self, redirect=None, **post):
-        ADDITIONAL_FIELD = ["birthday"]
+        self.MANDATORY_BILLING_FIELDS.append("birthday")
         res = super(WebsiteAccount, self).details(redirect=None, **post)
-        partner = request.env.user.partner_id
-        qcontext = res.get_auth_signup_qcontext()
-        print qcontext
-        # partner_obj = request.env.user
-        # partner_obj.write(values)
-        # res.qcontext.update({key: post[key] for key in self.ADDITIONAL_FIELD})
         return res
