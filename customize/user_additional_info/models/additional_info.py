@@ -17,3 +17,9 @@ class UserAdditionalInfo(models.Model):
     # Expanding information
     verified_email = fields.Boolean(string="Checking email verified")
     verified_phone = fields.Boolean(string="Checking phone verified")
+
+class UserPartnerInfo(models.Model):
+
+    _inherit = "res.partner"
+
+    birthday = fields.Date(string="Users Birthday")
