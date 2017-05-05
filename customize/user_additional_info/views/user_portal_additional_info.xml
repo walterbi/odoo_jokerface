@@ -2,11 +2,11 @@
 <odoo>
     <!-- Inherit template id: portal_layout, details-->
     <template id="user_portal_additional_info" inherit_id="auth_signup.fields" name="Additional Signup info">
-        <xpath expr="//div[@class='form-group field-confirm_password']" position="after">
-            <div class="form-group field-phone">
-                <label for="phone" class="control-label">* Your Phone</label>
+        <xpath expr="//div[contains(@class, 'form-group field-confirm_password')]" position="after">
+            <div class="form-group field-phone o_website_form_required_custom">
+                <label for="phone" class="control-label">Your Phone</label>
                 <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control"
-                    autocapitalize="off" required="required"/>
+                    autocapitalize="off" required=""/>
             </div>
             <div class="form-group field-street" required="required">
                 <label for="street" class="control-label">Your Address</label>

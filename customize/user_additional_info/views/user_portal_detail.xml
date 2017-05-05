@@ -1,10 +1,9 @@
 <odoo>
     <template id="user_portal_detail" inherit_id="website_portal.details">
-        <xpath expr="//div[@t-if='has_check_vat']" position="replace"></xpath>
-        <xpath expr="//div[@class='col-md-8']//div[@class='row']" position="after">
+        <xpath expr="//div[@t-if='has_check_vat']" position="replace">
             <div t-attf-class="form-group #{error.get('birthday') and 'has-error' or ''} col-lg-6">
                 <label class="control-label label-optional" for="birthday">Birthday</label>
-                <input type="text" name="birthday" class="form-control" t-att-value="birthday or partner.birthday"/>
+                <input type="text" name="birthday" class="form-control" t-att-value="birthday or partner.birthday" required=""/>
             </div>
         </xpath>
     </template>
