@@ -10,7 +10,7 @@ Product Modified
     """,
     'depends': ['base', 'web', 'website_sale'],
     'data': [
-        
+        'views/product_discount_pricelist.xml',
     ],
     'application': True,
 }

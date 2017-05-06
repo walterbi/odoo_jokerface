@@ -1,0 +1,18 @@
+<odoo>
+    <template id="product_discount_pricelist" inherit_id="website_sale.products_item">
+        <xpath expr="//span[@t-esc='product.website_price']" position="replace">
+            <!--<t t-esc="product.list_price"/>-->
+            <t t-if="product.website_price == product.list_price">
+                <span t-esc="product.list_price"
+                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+            </t>
+
+            <t t-if="product.list_price > product.website_price">
+                <span t-esc="product.website_price"
+                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <strike><span t-esc="product.list_price"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/></strike>
+            </t>
+        </xpath>
+    </template>
+</odoo>
