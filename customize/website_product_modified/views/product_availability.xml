@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="product_availability_form" model="ir.ui.view">
+            <field name="name">product.availability.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="after">
+                    <button string="Check" name="default_availability"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
