@@ -15,3 +15,4 @@ class ProductAvailability(models.Model):
         on_hand = len(stock_product_change)
         if on_hand == 0:
             self.availability = 'out_of_stock'
+            # test abc
