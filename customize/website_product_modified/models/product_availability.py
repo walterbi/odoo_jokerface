@@ -8,6 +8,7 @@ class ProductAvailability(models.Model):
     _inherit = "product.template"
 
     availability = fields.Selection(selection_add=[('out_of_stock', 'Out of Stock')])
+    description_sale = fields.Html('Description Quotations')
 
     @api.multi
     def default_availability(self):
