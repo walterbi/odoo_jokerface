@@ -9,7 +9,7 @@ class ProductAvailability(models.Model):
 
     availability = fields.Selection(selection_add=[('out_of_stock', 'Out of Stock')])
     description_sale = fields.Html('Description Quotations')
-    is_shirt = fields.Boolean('Checking T-Shirt product', compute="_compute_shirt")
+    is_shirt = fields.Boolean('Checking T-Shirt product', default=False, compute="_compute_shirt")
 
     @api.multi
     def default_availability(self):
@@ -20,7 +20,6 @@ class ProductAvailability(models.Model):
 
     @api.depends()
     def _compute_shirt(self):
-        shirt_check = self.search([])
-        for item in shirt_check:
-            if "Áo thun" in item.categ_id.name:
-                print shirt_check.name
+        if u"Áo Thun" in self.categ_id.name:
+            self.is_shirt = True
+            print "Is Shirt"
