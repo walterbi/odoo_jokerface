@@ -9,6 +9,7 @@ class ProductAvailability(models.Model):
 
     availability = fields.Selection(selection_add=[('out_of_stock', 'Out of Stock')])
     description_sale = fields.Html('Description Quotations')
+    is_shirt = fields.Boolean('Checking T-Shirt product', compute="_compute_shirt")
 
     @api.multi
     def default_availability(self):
@@ -16,4 +17,10 @@ class ProductAvailability(models.Model):
         on_hand = len(stock_product_change)
         if on_hand == 0:
             self.availability = 'out_of_stock'
-            # test abc
+
+    @api.depends()
+    def _compute_shirt(self):
+        shirt_check = self.search([])
+        for item in shirt_check:
+            if "Áo thun" in item.categ_id.name:
+                print shirt_check.name

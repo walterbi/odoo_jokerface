@@ -31,9 +31,9 @@
         </xpath>
     </template>
 
-    <template id="product_sorting_feature" inherit_id="website_sale.sort">
-        <xpath expr="//t[@t-set='name_asc_label']" position="attributes">
-            <attribute name="t-value">availability.sort()</attribute>
-        </xpath>
-    </template>
+    <!--<template id="product_sorting_feature" inherit_id="website_sale.sort">-->
+        <!--<xpath expr="//t[@t-set='name_asc_label']" position="attributes">-->
+            <!--<attribute name="t-value">availability.sort()</attribute>-->
+        <!--</xpath>-->
+    <!--</template>-->
 </odoo>
