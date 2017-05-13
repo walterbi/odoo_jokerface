@@ -1,15 +1,13 @@
-# # -*- coding: utf-8 -*-
-#
-# import json
-# import logging
-# from werkzeug.exceptions import Forbidden
-#
-# from odoo import http, tools, _
-# from odoo.http import request
-# from odoo.addons.website.controllers.main import *
-# from odoo.exceptions import ValidationError
-#
-# class WebsiteSale(http.Controller):
-#     @http.route()
-#     def shop(self):
-#
+# -*- coding: utf-8 -*-
+
+from odoo import http, tools, _
+from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo.addons.website.models.website import slug
+from odoo.addons.website.controllers.main import QueryURL
+from odoo.http import request
+
+
+class WebsiteSaleProduct(WebsiteSale):
+
+    def _get_search_order(self, post):
+        return 'availability asc, write_date asc, is_shirt asc'
