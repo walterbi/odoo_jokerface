@@ -8,6 +8,5 @@ from odoo.http import request
 
 
 class WebsiteSaleProduct(WebsiteSale):
-
     def _get_search_order(self, post):
-        return 'availability asc, write_date asc, is_shirt asc'
+        return 'is_shirt asc, availability asc'
