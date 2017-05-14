@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, api, models
+import unicodedata
 
 
 class ProductAvailability(models.Model):
@@ -12,6 +13,8 @@ class ProductAvailability(models.Model):
                                     compute="_default_availability")
     description_sale = fields.Html('Description Quotations')
     is_shirt = fields.Boolean('Checking T-Shirt product', default=False, compute="_compute_shirt", store=True)
+    ascii_name = fields.Char('ASCII name for products', default="", compute="_compute_ascii_name", store=True)
+    ascii_description_sale = fields.Char('ASCII description sale for products')
 
     @api.depends()
     def _default_availability(self):
@@ -41,3 +44,15 @@ class ProductAvailability(models.Model):
         else:
             if u"Áo Thun" in self.categ_id.name:
                 self.is_shirt = True
+
+    @api.depends()
+    def _compute_ascii_name(self):
+        if len(self) > 1:
+            for item in self:
+                item.ascii_name = unicodedata.normalize('NFKD', item.name).encode('ascii', 'ignore')
+                # item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode('ascii', 'ignore')
+        else:
+            self.ascii_name = unicodedata.normalize('NFKD', self.name).encode('ascii', 'ignore')
+            # self.ascii_description_sale = unicodedata.normalize('NFKD', self.description_sale).encode('ascii', 'ignore')
+
+        print "check point"
