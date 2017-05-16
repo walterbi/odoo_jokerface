@@ -45,14 +45,16 @@ class ProductAvailability(models.Model):
             if u"Áo Thun" in self.categ_id.name:
                 self.is_shirt = True
 
-    @api.depends()
+    @api.depends("name")
     def _compute_ascii_name(self):
         if len(self) > 1:
             for item in self:
-                item.ascii_name = unicodedata.normalize('NFKD', item.name).encode('ascii', 'ignore')
-                # item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode('ascii', 'ignore')
+                if item.name:
+                    item.ascii_name = unicodedata.normalize('NFKD', item.name).encode('ascii', 'ignore')
+                    item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode('ascii',
+                                                                                                              'ignore')
         else:
-            self.ascii_name = unicodedata.normalize('NFKD', self.name).encode('ascii', 'ignore')
-            # self.ascii_description_sale = unicodedata.normalize('NFKD', self.description_sale).encode('ascii', 'ignore')
-
-        print "check point"
+            if self.name:
+                self.ascii_name = unicodedata.normalize('NFKD', self.name).encode('ascii', 'ignore')
+                self.ascii_description_sale = unicodedata.normalize('NFKD', self.description_sale).encode('ascii',
+                                                                                                          'ignore')
