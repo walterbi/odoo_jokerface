@@ -16,7 +16,8 @@ class ProductAvailability(models.Model):
     ascii_name = fields.Char('ASCII name for products', default="", compute="_compute_ascii_name", store=True)
     ascii_description_sale = fields.Char('ASCII description sale for products', default="", store=True)
 
-    @api.depends("qty_available")
+    # @api.onchange("qty_available", "name")
+    @api.onchange("name")
     def _default_availability(self):
         if len(self) > 1:
             for item in self:
@@ -37,31 +38,31 @@ class ProductAvailability(models.Model):
 
     @api.depends("name")
     def _compute_shirt(self):
-        if len(self) > 1:
-            for item in self:
-                if u"Áo Thun" in item.categ_id.name:
-                    item.is_shirt = True
-        else:
-            if u"Áo Thun" in self.categ_id.name:
-                self.is_shirt = True
+        for item in self:
+            if u"Áo Thun" in item.categ_id.name:
+                item.is_shirt = True
 
     @api.depends("name")
     def _compute_ascii_name(self):
         if self.name:
-            if len(self) > 1:
-                for item in self:
-                    item.ascii_name = unicodedata.normalize('NFKD', item.name).encode('ascii', 'ignore')
-            else:
-                self.ascii_name = unicodedata.normalize('NFKD', self.name).encode('ascii', 'ignore')
+            for item in self:
+                item.ascii_name = unicodedata.normalize('NFKD', item.name).encode('ascii', 'ignore')
 
-    @api.depends("description_sale")
-    def _compute_ascii_name(self):
+    @api.depends("description_sale", "name")
+    def _compute_ascii_description_sale(self):
         if not self.description_sale:
             self.description_sale = u""
         if self.description_sale:
-            if len(self) > 1:
-                for item in self:
-                    item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode(
-                        'ascii', 'ignore')
-            else:
-                self.ascii_description_sale = unicodedata.normalize('NFKD', self.description_sale).encode('ascii', 'ignore')
+            for item in self:
+                item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode('ascii', 'ignore')
+
+    @api.multi
+    def write(self, vals):
+        res = super(ProductAvailability, self).write(vals)
+        vals.update({
+            'ascii_name': self.ascii_name,
+            'is_shirt': self.is_shirt,
+            'ascii_description_sale': self.ascii_description_sale,
+            'availability': self.availability,
+        })
+        return res
