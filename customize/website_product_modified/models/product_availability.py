@@ -10,13 +10,13 @@ class ProductAvailability(models.Model):
 
     availability = fields.Selection(selection_add=[('out_of_stock', 'Out of Stock')],
                                     default="out_of_stock",
-                                    compute="_default_availability")
-    description_sale = fields.Html('Description Quotations')
+                                    compute="_default_availability", store=True)
+    description_sale = fields.Html('Description Quotations', default="")
     is_shirt = fields.Boolean('Checking T-Shirt product', default=False, compute="_compute_shirt", store=True)
     ascii_name = fields.Char('ASCII name for products', default="", compute="_compute_ascii_name", store=True)
-    ascii_description_sale = fields.Char('ASCII description sale for products')
+    ascii_description_sale = fields.Char('ASCII description sale for products', default="", store=True)
 
-    @api.depends()
+    @api.depends("qty_available")
     def _default_availability(self):
         if len(self) > 1:
             for item in self:
@@ -35,7 +35,7 @@ class ProductAvailability(models.Model):
                     else:
                         self.availability = "out_of_stock"
 
-    @api.depends()
+    @api.depends("name")
     def _compute_shirt(self):
         if len(self) > 1:
             for item in self:
@@ -45,14 +45,23 @@ class ProductAvailability(models.Model):
             if u"Áo Thun" in self.categ_id.name:
                 self.is_shirt = True
 
-    @api.depends()
+    @api.depends("name")
     def _compute_ascii_name(self):
-        if len(self) > 1:
-            for item in self:
-                item.ascii_name = unicodedata.normalize('NFKD', item.name).encode('ascii', 'ignore')
-                # item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode('ascii', 'ignore')
-        else:
-            self.ascii_name = unicodedata.normalize('NFKD', self.name).encode('ascii', 'ignore')
-            # self.ascii_description_sale = unicodedata.normalize('NFKD', self.description_sale).encode('ascii', 'ignore')
+        if self.name:
+            if len(self) > 1:
+                for item in self:
+                    item.ascii_name = unicodedata.normalize('NFKD', item.name).encode('ascii', 'ignore')
+            else:
+                self.ascii_name = unicodedata.normalize('NFKD', self.name).encode('ascii', 'ignore')
 
-        print "check point"
+    @api.depends("description_sale")
+    def _compute_ascii_name(self):
+        if not self.description_sale:
+            self.description_sale = u""
+        if self.description_sale:
+            if len(self) > 1:
+                for item in self:
+                    item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode(
+                        'ascii', 'ignore')
+            else:
+                self.ascii_description_sale = unicodedata.normalize('NFKD', self.description_sale).encode('ascii', 'ignore')
