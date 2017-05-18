@@ -14,10 +14,10 @@ class ProductAvailability(models.Model):
     description_sale = fields.Html('Description Quotations', default="")
     is_shirt = fields.Boolean('Checking T-Shirt product', default=False, compute="_compute_shirt", store=True)
     ascii_name = fields.Char('ASCII name for products', default="", compute="_compute_ascii_name", store=True)
-    ascii_description_sale = fields.Char('ASCII description sale for products', default="", store=True)
+    ascii_description_sale = fields.Char('ASCII description sale for products', default="",
+                                         compute="_compute_ascii_description_sale", store=True)
 
-    # @api.onchange("qty_available", "name")
-    @api.onchange("name")
+    @api.onchange('qty_available')
     def _default_availability(self):
         if len(self) > 1:
             for item in self:
@@ -36,7 +36,7 @@ class ProductAvailability(models.Model):
                     else:
                         self.availability = "out_of_stock"
 
-    @api.depends("name")
+    @api.depends("categ_id")
     def _compute_shirt(self):
         for item in self:
             if u"Áo Thun" in item.categ_id.name:
@@ -48,7 +48,7 @@ class ProductAvailability(models.Model):
             for item in self:
                 item.ascii_name = unicodedata.normalize('NFKD', item.name).encode('ascii', 'ignore')
 
-    @api.depends("description_sale", "name")
+    @api.depends("description_sale")
     def _compute_ascii_description_sale(self):
         if not self.description_sale:
             self.description_sale = u""
@@ -56,13 +56,3 @@ class ProductAvailability(models.Model):
             for item in self:
                 item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode('ascii', 'ignore')
 
-    @api.multi
-    def write(self, vals):
-        res = super(ProductAvailability, self).write(vals)
-        vals.update({
-            'ascii_name': self.ascii_name,
-            'is_shirt': self.is_shirt,
-            'ascii_description_sale': self.ascii_description_sale,
-            'availability': self.availability,
-        })
-        return res
