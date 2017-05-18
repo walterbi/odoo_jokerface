@@ -17,7 +17,7 @@ class ProductAvailability(models.Model):
     ascii_description_sale = fields.Char('ASCII description sale for products', default="",
                                          compute="_compute_ascii_description_sale", store=True)
 
-    @api.onchange('qty_available')
+    @api.depends('qty_available')
     def _default_availability(self):
         if len(self) > 1:
             for item in self:
@@ -55,4 +55,3 @@ class ProductAvailability(models.Model):
         if self.description_sale:
             for item in self:
                 item.ascii_description_sale = unicodedata.normalize('NFKD', item.description_sale).encode('ascii', 'ignore')
-
