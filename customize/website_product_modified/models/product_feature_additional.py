@@ -10,21 +10,6 @@ DEFAULT_FIRST_DIGIT = 9
 class ProductFeatureAdditional(models.Model):
     _inherit = "product.template"
 
-    # @api.onchange('name')
-    # def _compute_default_code(self):
-    #     _default_code = self.default_code
-    #     if not _default_code:
-    #         _default_code = str(DEFAULT_FIRST_DIGIT)
-    #         # Request the latest product id
-    #         res = self.env['product.template'].search([])
-    #         latest_id = max(res.ids)
-    #
-    #         for i in range(MAX_CODE_LENGTH - len(str(latest_id))):
-    #             _default_code += '0'
-    #         _default_code += str(latest_id)
-    #         self.default_code = _default_code + '-000'
-    #         self.barcode = _default_code+ '-000'
-
     @api.model
     def create(self, vals):
         _default_code = self.default_code
