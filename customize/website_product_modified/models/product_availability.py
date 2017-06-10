@@ -11,7 +11,7 @@ class ProductAvailability(models.Model):
     availability = fields.Selection(selection_add=[('out_of_stock', 'Out of Stock')],
                                     default="out_of_stock",
                                     compute="_default_availability", store=True)
-    description_sale = fields.Html('Description Quotations', default="")
+    html_description_sale = fields.Html('Description Quotations', default="")
     is_shirt = fields.Boolean('Checking T-Shirt product', default=False, compute="_compute_shirt", store=True)
     ascii_name = fields.Char('ASCII name for products', default="", compute="_compute_ascii_name", store=True)
     ascii_description_sale = fields.Char('ASCII description sale for products', default="",

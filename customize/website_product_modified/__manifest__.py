@@ -14,6 +14,7 @@ Product Modified
         'views/product_richtext.xml',
         'views/product_availability.xml',
         'views/product_variant_image.xml',
+        'views/purchase_order_rmb_views.xml',
     ],
     'application': True,
 }
