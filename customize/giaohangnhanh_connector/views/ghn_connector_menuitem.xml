@@ -1,4 +1,0 @@
-<odoo>
-    <menuitem id="ghn_connector_menu_root" name="Giaohangnhanh"/>
-    <menuitem id="ghn_connector_configuration" name="Configuration" parent="ghn_connector_menu_root" sequence="2"/>
-</odoo>

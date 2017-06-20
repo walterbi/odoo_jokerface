@@ -1,9 +1,0 @@
-<odoo>
-    <record id="actions_giaohangnhanh_form" model="ir.actions.act_window">
-        <field name="name">action.giaohangnhanh.form</field>
-        <field name="res_model">ghn.connector</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_connector_list"/>
-    </record>
-</odoo>
