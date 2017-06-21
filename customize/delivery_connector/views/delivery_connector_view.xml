@@ -1,0 +1,38 @@
+<odoo>
+    <record model="ir.ui.view" id="view_delivery_connector_tree">
+        <field name="name">view.delivery.connector.tree</field>
+        <field name="model">delivery.connector</field>
+        <field name="arch" type="xml">
+            <tree string="Acquirer">
+                <field name="name"/>
+                <field name="api_key"/>
+                <field name="client_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_delivery_connector_form">
+        <field name="name">view.delivery.connector.form</field>
+        <field name="model">delivery.connector</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="test_api" type="object" icon="fa-play">
+                            <span class="o_stat_text">Test API</span>
+                        </button>
+                    </div>
+                    <group id="api_client">
+                        <field name="name"/>
+                        <field name="api_key"/>
+                        <field name="api_secret"/>
+                    </group>
+                    <group id="service_client">
+                        <field name="client_id"/>
+                        <field name="client_pwd"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

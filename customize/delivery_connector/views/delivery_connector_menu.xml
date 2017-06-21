@@ -1,0 +1,18 @@
+<odoo>
+    <record model="ir.actions.act_window" id="delivery_connector_action">
+        <field name="name">Delivery Connector</field>
+        <field name="res_model">delivery.connector</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first delivery connector</p>
+        </field>
+    </record>
+
+    <!-- Top Menu -->
+    <menuitem id="delivery_connector_menu_root" name="Delivery Connector"/>
+    <!-- Main menu -->
+    <menuitem id="delivery_connector_menu_main" name="Acquirer"
+              action="delivery_connector_action"
+              parent="delivery_connector_menu_root"/>
+</odoo>
