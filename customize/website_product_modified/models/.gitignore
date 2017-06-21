@@ -1,0 +1,7 @@
+*.pyc
+/.gitignore
+/__init__.pyc
+/product_availability.pyc
+/product_feature_additional.pyc
+/product_variant_image.pyc
+/purchase_order_rmb.pyc
