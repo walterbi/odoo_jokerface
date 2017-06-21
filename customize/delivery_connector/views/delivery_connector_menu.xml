@@ -14,5 +14,5 @@
     <!-- Main menu -->
     <menuitem id="delivery_connector_menu_main" name="Acquirer"
               action="delivery_connector_action"
-              parent="delivery_connector_menu_root"/>
+              parent="delivery_connector_menu_root" sequence="2"/>
 </odoo>
