@@ -1,0 +1,39 @@
+<odoo>
+    <record model="ir.actions.act_window" id="membership_settings_action">
+        <field name="name">Membership Type</field>
+        <field name="res_model">membership.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Tạo mới một loại thành viên</p>
+        </field>
+    </record>
+    <menuitem id="membership_settings_type" name="Membership Type" action="membership_settings_action"
+              parent="membership_setting_menu" sequence="10"/>
+
+    <record model="ir.ui.view" id="membership_type_tree">
+        <field name="name">membership.type.tree</field>
+        <field name="model">membership.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="discount"/>
+                <field name="saved_percent"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="membership_type_form">
+        <field name="name">membership.type.form</field>
+        <field name="model">membership.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <group id="basic_info">
+                    <field name="name"/>
+                    <field name="discount"/>
+                    <field name="saved_percent"/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

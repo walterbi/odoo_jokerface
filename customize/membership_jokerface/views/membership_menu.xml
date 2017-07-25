@@ -1,0 +1,6 @@
+<odoo>
+    <!-- Root menu-->
+    <menuitem name="Membership" id="membership_root_menu"/>
+    <!-- Setting menu -->
+    <menuitem name="Settings" id="membership_setting_menu" parent="membership_root_menu" sequence="4"/>
+</odoo>

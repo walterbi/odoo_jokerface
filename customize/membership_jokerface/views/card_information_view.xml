@@ -1,0 +1,43 @@
+<odoo>
+    <record model="ir.actions.act_window" id="card_information_action">
+        <field name="name">Membership Card</field>
+        <field name="res_model">card.information</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Tạo mới một thẻ thành viên</p>
+        </field>
+    </record>
+    <menuitem id="card_information_main_menu" name="Membership Card"
+              action="card_information_action" parent="membership_root_menu" sequence="3"/>
+
+    <record model="ir.ui.view" id="card_information_view_tree">
+        <field name="name">card.information.tree</field>
+        <field name="model">card.information</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="type" string="Loại thành viên"/>
+                <field name="user_info"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="card_information_view_form">
+        <field name="name">card.information.form</field>
+        <field name="model">card.information</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group id="basic_information">
+                        <field name="name" string="Alias"/>
+                        <field name="type"/>
+                    </group>
+                    <group id="membership_point">
+                        <field name="user_info"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
