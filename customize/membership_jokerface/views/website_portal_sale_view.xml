@@ -45,4 +45,29 @@
             </table>
         </t>
     </template>
+
+    <template id="payment_membership" inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='payment_method']" position="after">
+            <div class="js_payment mb64 row">
+                <div class="col-lg-5 col-sm-6">
+                    <h4>Membership Point:</h4>
+                    <b><t t-esc="membership.earn_point"></t></b>
+                </div>
+                <div class="col-lg-5 col-sm-6">
+                    <h4>Use point:</h4>
+                    <t t-if="membership.earn_point > 0">
+                        <input type="text" id="point_to_use"/>
+                    </t>
+                    <t t-if="membership.earn_point &lt;=0">
+                        <p>Point to use is not available</p>
+                    </t>
+                </div>
+                <div class="col-lg-5 col-sm-6">
+                    <h4>Saving point:</h4>
+                    <strong><t t-esc="point_saving"/></strong>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
 </odoo>
